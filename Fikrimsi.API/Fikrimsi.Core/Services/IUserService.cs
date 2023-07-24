@@ -1,4 +1,5 @@
 ﻿using Fikrimsi.Core.DTOs;
+using Fikrimsi.SharedLibrary.Dtos;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -9,8 +10,8 @@ namespace Fikrimsi.Core.Services
 {
     public interface IUserService
     {
-        Task<UserAppDto> CreateUserAsync(CreateUserDto createUserDto);
+        Task<Response<UserAppDto>> CreateUserAsync(CreateUserDto createUserDto);
 
-        Task<UserAppDto> GetUserByName(string userName);
+        Task<Response<UserAppDto>> GetUserByName(string userName);
     }
 }

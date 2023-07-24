@@ -12,7 +12,7 @@ namespace Fikrimsi.Repository.Context
 {
     public class AppDbContext : IdentityDbContext<UserApp, IdentityRole, string>
     {
-        public AppDbContext(DbContextOptions options) : base(options)
+        public AppDbContext(DbContextOptions<AppDbContext> options) : base(options)
         {
         }
 

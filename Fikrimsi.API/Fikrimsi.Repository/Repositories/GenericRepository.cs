@@ -1,4 +1,5 @@
 ﻿using Fikrimsi.Core.Repositories;
+using Fikrimsi.Repository.Context;
 using Microsoft.EntityFrameworkCore;
 using System;
 using System.Collections.Generic;
@@ -12,10 +13,10 @@ namespace Fikrimsi.Repository.Repositories
     public class GenericRepository<TEntity> : IGenericRepository<TEntity> where TEntity : class
     {
 
-        private readonly DbContext _dbContext;
+        private readonly AppDbContext _dbContext;
         private readonly DbSet<TEntity> _dbSet;
 
-        public GenericRepository(DbContext dbContext, DbSet<TEntity> dbSet)
+        public GenericRepository(AppDbContext dbContext)
         {
             _dbContext = dbContext;
             _dbSet = dbContext.Set<TEntity>();

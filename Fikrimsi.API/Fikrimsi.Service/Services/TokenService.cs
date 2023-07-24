@@ -52,7 +52,7 @@ namespace Fikrimsi.Service.Services
             userList.AddRange(audiences.Select(x => new Claim(System.IdentityModel.Tokens.Jwt.JwtRegisteredClaimNames.Aud, x)));
             return userList;
 
-        }
+        }                //denemek amaçlı yorum satırına al
 
         private IEnumerable<Claim> GetClaimsByClient(Client client)
         {
@@ -64,7 +64,7 @@ namespace Fikrimsi.Service.Services
             new Claim(System.IdentityModel.Tokens.Jwt.JwtRegisteredClaimNames.Sub, client.Id.ToString());
 
             return claims;
-        }
+        }        //denemek amaçlı yorum satırına al
 
 
         public TokenDto CreateToken(UserApp userApp)
@@ -127,6 +127,6 @@ namespace Fikrimsi.Service.Services
             };
 
             return tokenDto;
-        }
+        }           //denemek amaçlı yorum satırına al
     }
 }

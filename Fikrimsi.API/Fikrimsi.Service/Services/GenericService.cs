@@ -14,8 +14,8 @@ namespace Fikrimsi.Service.Services
     public class GenericService<TEntity> : IGenericService<TEntity> where TEntity : class
     {
 
-        protected readonly IGenericRepository<TEntity> _genericRepository;
-        protected readonly IUnitOfWork _unitOfWork;
+        private readonly IGenericRepository<TEntity> _genericRepository;
+        private readonly IUnitOfWork _unitOfWork;
 
         public GenericService(IGenericRepository<TEntity> genericRepository, IUnitOfWork unitOfWork)
         {
@@ -41,7 +41,7 @@ namespace Fikrimsi.Service.Services
 
         public IQueryable<TEntity> GetListByFilter(Expression<Func<TEntity, bool>> expression)
         {
-            throw new NotImplementedException();
+            return _genericRepository.GetListByFilter(expression);
         }
 
         public async void Remove(TEntity t)

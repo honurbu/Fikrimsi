@@ -9,7 +9,7 @@ namespace Fikrimsi.Core.Entities
 {
     public class UserApp : IdentityUser, IEntity
     {
-        public string City { get; set; }
+        public string? City { get; set; }
         //public string About { get; set; }
     }
 }

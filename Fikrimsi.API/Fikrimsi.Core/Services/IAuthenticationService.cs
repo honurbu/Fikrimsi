@@ -12,7 +12,7 @@ namespace Fikrimsi.Core.Services
         Task<TokenDto>CreateTokenAsync(LoginDto loginDto);
         Task<TokenDto>CreateTokenByRefreshTokenAsync(string refreshToken);
         Task<NoDataDto>RevokeByRefreshTokenAsync(string refreshToken);
-        Task<ClientTokenDto> CreateTokenByClient(ClientTokenDto clientTokenDto);
+        ClientTokenDto CreateTokenByClient(ClientLoginDto clientLoginDto);
 
     }
 }

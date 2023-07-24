@@ -1,0 +1,15 @@
+C:\Users\Onur\Desktop\Windows Form Projelerim\Fikrimsi.API\Fikrimsi.Core\bin\Debug\net7.0\Fikrimsi.Core.deps.json
+C:\Users\Onur\Desktop\Windows Form Projelerim\Fikrimsi.API\Fikrimsi.Core\bin\Debug\net7.0\Fikrimsi.Core.dll
+C:\Users\Onur\Desktop\Windows Form Projelerim\Fikrimsi.API\Fikrimsi.Core\bin\Debug\net7.0\Fikrimsi.Core.pdb
+C:\Users\Onur\Desktop\Windows Form Projelerim\Fikrimsi.API\Fikrimsi.Core\obj\Debug\net7.0\Fikrimsi.Core.csproj.AssemblyReference.cache
+C:\Users\Onur\Desktop\Windows Form Projelerim\Fikrimsi.API\Fikrimsi.Core\obj\Debug\net7.0\Fikrimsi.Core.GeneratedMSBuildEditorConfig.editorconfig
+C:\Users\Onur\Desktop\Windows Form Projelerim\Fikrimsi.API\Fikrimsi.Core\obj\Debug\net7.0\Fikrimsi.Core.AssemblyInfoInputs.cache
+C:\Users\Onur\Desktop\Windows Form Projelerim\Fikrimsi.API\Fikrimsi.Core\obj\Debug\net7.0\Fikrimsi.Core.AssemblyInfo.cs
+C:\Users\Onur\Desktop\Windows Form Projelerim\Fikrimsi.API\Fikrimsi.Core\obj\Debug\net7.0\Fikrimsi.Core.csproj.CoreCompileInputs.cache
+C:\Users\Onur\Desktop\Windows Form Projelerim\Fikrimsi.API\Fikrimsi.Core\obj\Debug\net7.0\Fikrimsi.Core.dll
+C:\Users\Onur\Desktop\Windows Form Projelerim\Fikrimsi.API\Fikrimsi.Core\obj\Debug\net7.0\refint\Fikrimsi.Core.dll
+C:\Users\Onur\Desktop\Windows Form Projelerim\Fikrimsi.API\Fikrimsi.Core\obj\Debug\net7.0\Fikrimsi.Core.pdb
+C:\Users\Onur\Desktop\Windows Form Projelerim\Fikrimsi.API\Fikrimsi.Core\obj\Debug\net7.0\ref\Fikrimsi.Core.dll
+C:\Users\Onur\Desktop\Windows Form Projelerim\Fikrimsi.API\Fikrimsi.Core\bin\Debug\net7.0\Fikrimsi.SharedLibrary.dll
+C:\Users\Onur\Desktop\Windows Form Projelerim\Fikrimsi.API\Fikrimsi.Core\bin\Debug\net7.0\Fikrimsi.SharedLibrary.pdb
+C:\Users\Onur\Desktop\Windows Form Projelerim\Fikrimsi.API\Fikrimsi.Core\obj\Debug\net7.0\Fikrimsi.Core.csproj.CopyComplete

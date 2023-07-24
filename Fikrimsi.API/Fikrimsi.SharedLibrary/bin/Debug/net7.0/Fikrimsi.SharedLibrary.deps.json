@@ -1,0 +1,23 @@
+{
+  "runtimeTarget": {
+    "name": ".NETCoreApp,Version=v7.0",
+    "signature": ""
+  },
+  "compilationOptions": {},
+  "targets": {
+    ".NETCoreApp,Version=v7.0": {
+      "Fikrimsi.SharedLibrary/1.0.0": {
+        "runtime": {
+          "Fikrimsi.SharedLibrary.dll": {}
+        }
+      }
+    }
+  },
+  "libraries": {
+    "Fikrimsi.SharedLibrary/1.0.0": {
+      "type": "project",
+      "serviceable": false,
+      "sha512": ""
+    }
+  }
+}

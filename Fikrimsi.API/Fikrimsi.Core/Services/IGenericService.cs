@@ -1,4 +1,5 @@
-﻿using System;
+﻿using Fikrimsi.Core.DTOs;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Linq.Expressions;
@@ -7,17 +8,17 @@ using System.Threading.Tasks;
 
 namespace Fikrimsi.Core.Services
 {
-    public interface IGenericService<TEntity> where TEntity : class
+    public interface IGenericService<TEntity,TDto> where TEntity : class where TDto: class
     {
-        Task AddAsync(TEntity t);
+        Task AddAsync(TDto t);
 
-        Task<IEnumerable<TEntity>> GetAllAsync();
-        IQueryable<TEntity> GetListByFilter(Expression<Func<TEntity, bool>> expression);
+        Task<IEnumerable<TDto>> GetAllAsync();
+        IQueryable<TDto> GetListByFilter(Expression<Func<TEntity, bool>> expression);
 
-        Task<TEntity> GetByIdAsync(int id);
+        Task<TDto> GetByIdAsync(int id);
 
-        void Remove(TEntity t);
+        void Remove(int id);
 
-        void Update(TEntity t);
+        void Update(TDto entity, int id);
     }
 }

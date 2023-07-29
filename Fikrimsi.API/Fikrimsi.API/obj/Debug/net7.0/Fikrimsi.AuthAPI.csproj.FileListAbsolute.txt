@@ -21,7 +21,6 @@ C:\Users\Onur\Desktop\Windows Form Projelerim\Fikrimsi.API\Fikrimsi.API\obj\Debu
 C:\Users\Onur\Desktop\Windows Form Projelerim\Fikrimsi.API\Fikrimsi.API\obj\Debug\net7.0\Fikrimsi.AuthAPI.AssemblyInfoInputs.cache
 C:\Users\Onur\Desktop\Windows Form Projelerim\Fikrimsi.API\Fikrimsi.API\obj\Debug\net7.0\Fikrimsi.AuthAPI.AssemblyInfo.cs
 C:\Users\Onur\Desktop\Windows Form Projelerim\Fikrimsi.API\Fikrimsi.API\obj\Debug\net7.0\Fikrimsi.AuthAPI.csproj.CoreCompileInputs.cache
-C:\Users\Onur\Desktop\Windows Form Projelerim\Fikrimsi.API\Fikrimsi.API\obj\Debug\net7.0\Fikrimsi.AuthAPI.MvcApplicationPartsAssemblyInfo.cs
 C:\Users\Onur\Desktop\Windows Form Projelerim\Fikrimsi.API\Fikrimsi.API\obj\Debug\net7.0\Fikrimsi.AuthAPI.MvcApplicationPartsAssemblyInfo.cache
 C:\Users\Onur\Desktop\Windows Form Projelerim\Fikrimsi.API\Fikrimsi.API\obj\Debug\net7.0\staticwebassets\msbuild.Fikrimsi.AuthAPI.Microsoft.AspNetCore.StaticWebAssets.props
 C:\Users\Onur\Desktop\Windows Form Projelerim\Fikrimsi.API\Fikrimsi.API\obj\Debug\net7.0\staticwebassets\msbuild.build.Fikrimsi.AuthAPI.props
@@ -90,3 +89,5 @@ C:\Users\Onur\Desktop\Windows Form Projelerim\Fikrimsi.API\Fikrimsi.API\bin\Debu
 C:\Users\Onur\Desktop\Windows Form Projelerim\Fikrimsi.API\Fikrimsi.API\bin\Debug\net7.0\Mono.TextTemplating.dll
 C:\Users\Onur\Desktop\Windows Form Projelerim\Fikrimsi.API\Fikrimsi.API\bin\Debug\net7.0\System.CodeDom.dll
 C:\Users\Onur\Desktop\Windows Form Projelerim\Fikrimsi.API\Fikrimsi.API\bin\Debug\net7.0\Microsoft.AspNetCore.Authentication.JwtBearer.dll
+C:\Users\Onur\Desktop\Windows Form Projelerim\Fikrimsi.API\Fikrimsi.API\bin\Debug\net7.0\AutoMapper.Extensions.Microsoft.DependencyInjection.dll
+C:\Users\Onur\Desktop\Windows Form Projelerim\Fikrimsi.API\Fikrimsi.API\obj\Debug\net7.0\Fikrimsi.AuthAPI.MvcApplicationPartsAssemblyInfo.cs

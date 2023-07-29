@@ -13,5 +13,6 @@ namespace Fikrimsi.Core.Services
         Task<Response<UserAppDto>> CreateUserAsync(CreateUserDto createUserDto);
 
         Task<Response<UserAppDto>> GetUserByName(string userName);
+        Task<Response<UserAppDto>> GetUserById(string id);
     }
 }

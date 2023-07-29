@@ -26,9 +26,9 @@ namespace Fikrimsi.SharedLibrary.Dtos
             return new Response<T> { Data = default, StatusCode = statusCode, IsSuccessful = true };
         }
 
-        public static Response<T> Fail(ErrorDto error, int statusCode)
+        public static Response<T> Fail(ErrorDto errorDto, int statusCode)
         {
-            return new Response<T> { Errors = error, StatusCode = statusCode, IsSuccessful = false };
+            return new Response<T> { Errors = errorDto, StatusCode = statusCode, IsSuccessful = false };
         }
 
         public static Response<T> Fail(string errorMessage, int statusCode, bool isShow)

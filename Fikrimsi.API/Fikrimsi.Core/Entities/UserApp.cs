@@ -3,13 +3,18 @@ using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
+using System.Text.Json.Serialization;
 using System.Threading.Tasks;
 
 namespace Fikrimsi.Core.Entities
 {
     public class UserApp : IdentityUser, IEntity
     {
-        public string? City { get; set; }
-        //public string About { get; set; }
+
+        //Relations
+
+        [JsonIgnore]
+        public List<Comment> Comments { get; set; }
+
     }
 }

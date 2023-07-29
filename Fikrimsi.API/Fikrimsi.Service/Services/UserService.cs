@@ -17,13 +17,15 @@ namespace Fikrimsi.Service.Services
     public class UserService : IUserService
     {
         UserManager<UserApp> _userManager;
+        RoleManager<IdentityRole> _roleManager;
         private readonly IUnitOfWork _unitOfWork;
 
 
-        public UserService(UserManager<UserApp> userManager, IUnitOfWork unitOfWork)
+        public UserService(UserManager<UserApp> userManager, IUnitOfWork unitOfWork, RoleManager<IdentityRole> roleManager)
         {
             _userManager = userManager;
             _unitOfWork = unitOfWork;
+            _roleManager = roleManager;
         }
 
         public async Task<Response<UserAppDto>> CreateUserAsync(CreateUserDto createUserDto)
@@ -42,11 +44,14 @@ namespace Fikrimsi.Service.Services
                 var errors = result.Errors.Select(e => e.Description).ToList();
                 return Response<UserAppDto>.Fail(new ErrorDto(errors, true), 400);
             }
-
-            await _unitOfWork.CommitAsync();
-
-            return Response<UserAppDto>.Success(ObjectMapper.Mapper.Map<UserAppDto>(user), 200);
+            else
+            {
+                await _userManager.AddToRoleAsync(user, "Acemi");
+                await _unitOfWork.CommitAsync();
+                return Response<UserAppDto>.Success(ObjectMapper.Mapper.Map<UserAppDto>(user), 200);
+            }
         }
+
 
         public async Task<Response<UserAppDto>> GetUserByName(string userName)
         {
@@ -59,6 +64,18 @@ namespace Fikrimsi.Service.Services
 
             return Response<UserAppDto>.Success(ObjectMapper.Mapper.Map<UserAppDto>(user), 200);
 
+        }
+
+        public async Task<Response<UserAppDto>> GetUserById(string id)
+        {
+            var user = await _userManager.FindByIdAsync(id);
+
+            if (user == null)
+                return Response<UserAppDto>.Fail("User Not Found !", 404, true);
+
+
+
+            return Response<UserAppDto>.Success(ObjectMapper.Mapper.Map<UserAppDto>(user), 200);
         }
     }
 }

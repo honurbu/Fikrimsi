@@ -1,10 +1,11 @@
 {
   "version": 2,
-  "dgSpecHash": "QmZgwVKDNsCXX8+qDECF70CsNvVgEppjjOQ04DSeyhFlMzJxs8ya8WuBe7MXvzGHq17cCWZAnDXBP/K6VOsmSA==",
+  "dgSpecHash": "PTXEZD2GTSp7BcfZ6/DyShOUoeowzz6EvytfMmV2Tk9Qrwbdfnzam5BBvFGAwSYOOqPlhX38I7AdUGFcw4se7w==",
   "success": true,
   "projectFilePath": "C:\\Users\\Onur\\Desktop\\Windows Form Projelerim\\Fikrimsi.API\\Fikrimsi.API\\Fikrimsi.AuthAPI.csproj",
   "expectedPackageFiles": [
     "C:\\Users\\Onur\\.nuget\\packages\\automapper\\12.0.1\\automapper.12.0.1.nupkg.sha512",
+    "C:\\Users\\Onur\\.nuget\\packages\\automapper.extensions.microsoft.dependencyinjection\\12.0.1\\automapper.extensions.microsoft.dependencyinjection.12.0.1.nupkg.sha512",
     "C:\\Users\\Onur\\.nuget\\packages\\azure.core\\1.24.0\\azure.core.1.24.0.nupkg.sha512",
     "C:\\Users\\Onur\\.nuget\\packages\\azure.identity\\1.6.0\\azure.identity.1.6.0.nupkg.sha512",
     "C:\\Users\\Onur\\.nuget\\packages\\humanizer.core\\2.14.1\\humanizer.core.2.14.1.nupkg.sha512",

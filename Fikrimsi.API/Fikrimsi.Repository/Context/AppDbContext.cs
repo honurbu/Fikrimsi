@@ -16,8 +16,10 @@ namespace Fikrimsi.Repository.Context
         {
         }
 
-        public DbSet<Product> Products { get; set; }
         public DbSet<UserRefreshToken> UserRefreshTokens { get; set; }
+        public DbSet<Comment> Comments { get; set; }
+        public DbSet<Subject> Subjects { get; set; }
+        public DbSet<Title> Titles { get; set; }
 
         protected override void OnModelCreating(ModelBuilder builder)
         {

@@ -22,7 +22,38 @@ namespace Fikrimsi.Repository.Migrations
 
             SqlServerModelBuilderExtensions.UseIdentityColumns(modelBuilder);
 
-            modelBuilder.Entity("Fikrimsi.Core.Entities.Product", b =>
+            modelBuilder.Entity("Fikrimsi.Core.Entities.Comment", b =>
+                {
+                    b.Property<int>("Id")
+                        .ValueGeneratedOnAdd()
+                        .HasColumnType("int");
+
+                    SqlServerPropertyBuilderExtensions.UseIdentityColumn(b.Property<int>("Id"));
+
+                    b.Property<DateTime>("CommentDate")
+                        .HasColumnType("datetime2");
+
+                    b.Property<string>("Content")
+                        .IsRequired()
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<int>("TitleId")
+                        .HasColumnType("int");
+
+                    b.Property<string>("UserAppId")
+                        .IsRequired()
+                        .HasColumnType("nvarchar(450)");
+
+                    b.HasKey("Id");
+
+                    b.HasIndex("TitleId");
+
+                    b.HasIndex("UserAppId");
+
+                    b.ToTable("Comments");
+                });
+
+            modelBuilder.Entity("Fikrimsi.Core.Entities.Subject", b =>
                 {
                     b.Property<int>("Id")
                         .ValueGeneratedOnAdd()
@@ -34,19 +65,34 @@ namespace Fikrimsi.Repository.Migrations
                         .IsRequired()
                         .HasColumnType("nvarchar(max)");
 
-                    b.Property<decimal>("Price")
-                        .HasColumnType("decimal(18,2)");
+                    b.HasKey("Id");
 
-                    b.Property<int>("Stock")
+                    b.ToTable("Subjects");
+                });
+
+            modelBuilder.Entity("Fikrimsi.Core.Entities.Title", b =>
+                {
+                    b.Property<int>("Id")
+                        .ValueGeneratedOnAdd()
                         .HasColumnType("int");
 
-                    b.Property<string>("UserId")
+                    SqlServerPropertyBuilderExtensions.UseIdentityColumn(b.Property<int>("Id"));
+
+                    b.Property<DateTime>("CreatedDate")
+                        .HasColumnType("datetime2");
+
+                    b.Property<string>("Name")
                         .IsRequired()
                         .HasColumnType("nvarchar(max)");
 
+                    b.Property<int>("SubjectId")
+                        .HasColumnType("int");
+
                     b.HasKey("Id");
 
-                    b.ToTable("Products");
+                    b.HasIndex("SubjectId");
+
+                    b.ToTable("Titles");
                 });
 
             modelBuilder.Entity("Fikrimsi.Core.Entities.UserApp", b =>
@@ -56,9 +102,6 @@ namespace Fikrimsi.Repository.Migrations
 
                     b.Property<int>("AccessFailedCount")
                         .HasColumnType("int");
-
-                    b.Property<string>("City")
-                        .HasColumnType("nvarchar(max)");
 
                     b.Property<string>("ConcurrencyStamp")
                         .IsConcurrencyToken()
@@ -268,6 +311,36 @@ namespace Fikrimsi.Repository.Migrations
                     b.ToTable("AspNetUserTokens", (string)null);
                 });
 
+            modelBuilder.Entity("Fikrimsi.Core.Entities.Comment", b =>
+                {
+                    b.HasOne("Fikrimsi.Core.Entities.Title", "Title")
+                        .WithMany("Comments")
+                        .HasForeignKey("TitleId")
+                        .OnDelete(DeleteBehavior.Cascade)
+                        .IsRequired();
+
+                    b.HasOne("Fikrimsi.Core.Entities.UserApp", "UserApp")
+                        .WithMany("Comments")
+                        .HasForeignKey("UserAppId")
+                        .OnDelete(DeleteBehavior.Cascade)
+                        .IsRequired();
+
+                    b.Navigation("Title");
+
+                    b.Navigation("UserApp");
+                });
+
+            modelBuilder.Entity("Fikrimsi.Core.Entities.Title", b =>
+                {
+                    b.HasOne("Fikrimsi.Core.Entities.Subject", "Subjects")
+                        .WithMany("Titles")
+                        .HasForeignKey("SubjectId")
+                        .OnDelete(DeleteBehavior.Cascade)
+                        .IsRequired();
+
+                    b.Navigation("Subjects");
+                });
+
             modelBuilder.Entity("Microsoft.AspNetCore.Identity.IdentityRoleClaim<string>", b =>
                 {
                     b.HasOne("Microsoft.AspNetCore.Identity.IdentityRole", null)
@@ -317,6 +390,21 @@ namespace Fikrimsi.Repository.Migrations
                         .HasForeignKey("UserId")
                         .OnDelete(DeleteBehavior.Cascade)
                         .IsRequired();
+                });
+
+            modelBuilder.Entity("Fikrimsi.Core.Entities.Subject", b =>
+                {
+                    b.Navigation("Titles");
+                });
+
+            modelBuilder.Entity("Fikrimsi.Core.Entities.Title", b =>
+                {
+                    b.Navigation("Comments");
+                });
+
+            modelBuilder.Entity("Fikrimsi.Core.Entities.UserApp", b =>
+                {
+                    b.Navigation("Comments");
                 });
 #pragma warning restore 612, 618
         }

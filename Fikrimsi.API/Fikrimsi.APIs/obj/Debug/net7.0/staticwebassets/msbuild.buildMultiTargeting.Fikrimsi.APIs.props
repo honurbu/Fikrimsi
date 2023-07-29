@@ -1,0 +1,3 @@
+﻿<Project>
+  <Import Project="..\build\Fikrimsi.APIs.props" />
+</Project>

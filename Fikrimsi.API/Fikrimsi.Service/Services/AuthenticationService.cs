@@ -36,7 +36,16 @@ namespace Fikrimsi.Service.Services
 
         public async Task<TokenDto> CreateTokenAsync(LoginDto loginDto)
         {
-            if (loginDto == null) throw new ArgumentNullException(nameof(loginDto));
+            try
+            {
+                if (loginDto == null) throw new ArgumentNullException(nameof(loginDto));
+
+            }
+            catch (Exception ex)
+            {
+
+                Console.WriteLine(ex.Message);
+            }
 
             var user = await _userManager.FindByEmailAsync(loginDto.Email);
 

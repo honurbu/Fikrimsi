@@ -1,4 +1,4 @@
-using Fikrimsi.Core.Configuration;
+﻿using Fikrimsi.Core.Configuration;
 using Fikrimsi.Core.Entities;
 using Fikrimsi.Core.Repositories;
 using Fikrimsi.Core.Services;
@@ -14,9 +14,11 @@ using Microsoft.AspNetCore.Identity;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.Hosting;
+using Microsoft.Extensions.Options;
 using Microsoft.OpenApi.Models;
 using System.Collections.Generic;
 using System.Reflection;
+using System.Security.Claims;
 
 var builder = WebApplication.CreateBuilder(args);
 
@@ -32,9 +34,11 @@ builder.Services.AddScoped<IAuthenticationService, AuthenticationService>();
 builder.Services.AddScoped<ITokenService, TokenService>();
 builder.Services.AddScoped<IUserService, UserService>();
 builder.Services.AddScoped<ICommentService,CommentService>();
+builder.Services.AddScoped<ITitleService,TitleService>();
 
 builder.Services.AddScoped(typeof(IGenericRepository<>), typeof(GenericRepository<>));
 builder.Services.AddScoped(typeof(ICommentRepository), typeof(CommentRepository));
+builder.Services.AddScoped(typeof(ITitleRepository), typeof(TitleRepository));
 builder.Services.AddScoped(typeof(IGenericService<,>), typeof(GenericService<,>));
 
 
@@ -89,18 +93,17 @@ builder.Services.AddControllers();
 
 // Learn more about configuring Swagger/OpenAPI at https://aka.ms/aspnetcore/swashbuckle
 builder.Services.AddEndpointsApiExplorer();
-//builder.Services.AddSwaggerGen(options =>
-//{
-//    options.AddSecurityDefinition("oauth2", new OpenApiSecurityScheme
-//    {
-//        Description = "Standard Authorization header using the Bearer scheme (\"bearer {token}\")",
-//        In = ParameterLocation.Header,
-//        Name = "Authorization",
-//        Type = SecuritySchemeType.ApiKey
-//    });
-//});
 
-
+builder.Services.AddCors(opt =>
+{
+    opt.AddPolicy("FikrimsiCors", opt =>
+    {
+        opt.AllowAnyHeader()
+        .AllowAnyMethod()
+        .SetIsOriginAllowed((host) => true)
+        .AllowCredentials();
+    });
+});
 builder.Services.AddSwaggerGen(c =>
 {
     c.AddSecurityDefinition("Bearer", new OpenApiSecurityScheme
@@ -112,6 +115,8 @@ builder.Services.AddSwaggerGen(c =>
         Scheme = "bearer",
         BearerFormat = "JWT"
     });
+
+ 
 
     c.AddSecurityRequirement(new OpenApiSecurityRequirement
         {
@@ -139,6 +144,9 @@ if (environment.IsDevelopment())
 }
 
 app.UseHttpsRedirection();
+
+app.UseCors("FikrimsiCors");
+
 app.UseAuthentication(); // Move UseAuthentication before UseAuthorization
 app.UseAuthorization();
 app.MapControllers();

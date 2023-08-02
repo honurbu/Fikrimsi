@@ -17,6 +17,7 @@ namespace Fikrimsi.Service.Mapping
             CreateMap<UserAppDto, UserApp>().ReverseMap(); 
             CreateMap<CreateUserDto, UserApp>().ReverseMap(); 
             CreateMap<CommentDto, Comment>().ReverseMap(); 
+            CreateMap<TitleDto, Title>().ReverseMap(); 
         }
     }
 }

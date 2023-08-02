@@ -4,6 +4,7 @@ using Fikrimsi.Core.Entities;
 using Fikrimsi.Core.Repositories;
 using Fikrimsi.Core.Services;
 using Fikrimsi.Core.UnitOfWork;
+using Fikrimsi.Repository.Context;
 using Microsoft.AspNetCore.DataProtection.AuthenticatedEncryption;
 using Microsoft.AspNetCore.Identity;
 using Microsoft.EntityFrameworkCore;
@@ -21,17 +22,21 @@ namespace Fikrimsi.Service.Services
 
         private readonly List<Client> _client;
         private readonly UserManager<UserApp> _userManager;
+        private readonly RoleManager<IdentityRole> _roleManager;
         private readonly ITokenService _tokenService;
         private readonly IUnitOfWork _unitOfWork;
         private readonly IGenericRepository<UserRefreshToken> _userRefreshTokenService;
+        private readonly AppDbContext _appDbContext;
 
-        public AuthenticationService(IOptions<List<Client>> client, UserManager<UserApp> userManager, ITokenService tokenService, IUnitOfWork unitOfWork, IGenericRepository<UserRefreshToken> userRefreshTokenService)
+        public AuthenticationService(IOptions<List<Client>> client, UserManager<UserApp> userManager, ITokenService tokenService, IUnitOfWork unitOfWork, IGenericRepository<UserRefreshToken> userRefreshTokenService, RoleManager<IdentityRole> roleManager, AppDbContext appDbContext)
         {
             _client = client.Value;
             _userManager = userManager;
             _tokenService = tokenService;
             _unitOfWork = unitOfWork;
             _userRefreshTokenService = userRefreshTokenService;
+            _roleManager = roleManager;
+            _appDbContext = appDbContext;
         }
 
         public async Task<TokenDto> CreateTokenAsync(LoginDto loginDto)
@@ -53,6 +58,16 @@ namespace Fikrimsi.Service.Services
 
             if (!await _userManager.CheckPasswordAsync(user, loginDto.Password)) throw new Exception("Email or Password Wrong !");
 
+            // Count the comments for the user
+            int commentCount = await GetCommentCountByUserId(user.Id);
+
+            // Check if comment count is greater than 10
+            if (commentCount > 10)
+            {
+                // Assign the "aaa" role to the user
+                await _userManager.AddToRoleAsync(user, "Yorumcu");
+            }
+
             var token = _tokenService.CreateToken(user);
 
 
@@ -67,6 +82,7 @@ namespace Fikrimsi.Service.Services
                 userRefreshToken.Code = token.RefreshToken;
                 userRefreshToken.Expiration = token.RefreshTokenExpiration;
             }
+           
 
             await _unitOfWork.CommitAsync();
 
@@ -111,5 +127,13 @@ namespace Fikrimsi.Service.Services
             return new NoDataDto();
 
         }
+
+
+
+        private async Task<int> GetCommentCountByUserId(string userId)
+        {
+            return await _appDbContext.Comments.CountAsync(c => c.UserAppId == userId);
+        }
+
     }
 }

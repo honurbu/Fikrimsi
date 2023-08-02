@@ -13,7 +13,7 @@ namespace Fikrimsi.Repository.Repositories
     public class GenericRepository<TEntity> : IGenericRepository<TEntity> where TEntity : class
     {
 
-        private readonly AppDbContext _dbContext;
+        protected readonly AppDbContext _dbContext;
         private readonly DbSet<TEntity> _dbSet;
 
         public GenericRepository(AppDbContext dbContext)

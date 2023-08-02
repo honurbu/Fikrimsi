@@ -22,6 +22,6 @@ namespace Fikrimsi.Core.DTOs
 
 
         //[JsonIgnore]
-        public string UserAppId { get; set; }
+        public string UserAppId  { get; set; }
     }
 }

@@ -17,7 +17,7 @@ namespace Fikrimsi.AuthAPI.Controllers
     public class Commentv2Controller : ControllerBase
     {
         private readonly ICommentService _commentService;
-        AppDbContext _appDbContext;
+        private readonly AppDbContext _appDbContext;
         public Commentv2Controller(ICommentService commentService, AppDbContext appDbContext)
         {
             _commentService = commentService;
@@ -27,32 +27,24 @@ namespace Fikrimsi.AuthAPI.Controllers
 
         [HttpPost]
         [Authorize]
-        //[Authorize(Roles="Yorumcu")]
-        //token not contain roles. So return Forbidden error. 
-        public async Task<IActionResult> AddComment(CommentDto commentv)
+        public async Task<IActionResult> AddComment([FromBody] CommentDto commentv)
         {
-
             string userId = User.FindFirst(ClaimTypes.NameIdentifier)?.Value;
-            //string userIdJson = JsonSerializer.Deserialize(userId);
-           
-            Comment comment = new Comment
+
+            commentv.UserAppId = userId; // UserAppId'yi doğrudan doldurun
+
+            CommentDto comment = new CommentDto
             {
                 CommentDate = DateTime.Now,
-                Content = commentv.Content, 
-                UserAppId = userId.ToString(),
+                Content = commentv.Content,
                 TitleId = commentv.TitleId,
+                UserAppId = commentv.UserAppId, // UserAppId'yi aktarın
             };
 
-
-            Console.WriteLine(comment.UserAppId);
             await _commentService.AddAsync(commentv);
 
             return Ok(comment);
         }
-
-
-
-
 
 
 
@@ -67,24 +59,5 @@ namespace Fikrimsi.AuthAPI.Controllers
             return Ok(comments);
            
         }
-
-
-        #region
-        /*
-         
-            var userName = HttpContext.User.Identity.Name;
-            var userIdClaim = User.Claims.FirstOrDefault(x => x.Type == ClaimTypes.NameIdentifier);
-
-
-            var users = dbContext.Users.Where(p => p.Id == userIdClaim.Value)
-                .Include(p => p.Allergies)
-                .Select(p => p.Allergies);
-
-            return Ok(users.FirstOrDefault());
-        */
-        #endregion
-
-
-
     }
 }

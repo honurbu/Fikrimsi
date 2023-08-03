@@ -18,5 +18,10 @@ namespace Fikrimsi.Service.Services
         {
             _commentRepository = commentRepository;
         }
+
+        public async Task<IEnumerable<Comment>> GetCommentByTitle(int id)
+        {
+            return await _commentRepository.GetCommentByTitle(id);
+        }
     }
 }

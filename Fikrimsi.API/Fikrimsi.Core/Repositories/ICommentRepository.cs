@@ -9,5 +9,7 @@ namespace Fikrimsi.Core.Repositories
 {
     public interface ICommentRepository : IGenericRepository<Comment>
     {
+        Task<IEnumerable<Comment>> GetCommentByTitle(int id);
+
     }
 }

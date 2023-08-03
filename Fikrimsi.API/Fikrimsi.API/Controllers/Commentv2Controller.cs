@@ -59,5 +59,15 @@ namespace Fikrimsi.AuthAPI.Controllers
             return Ok(comments);
            
         }
+
+
+        [HttpGet]
+        [Route("getComment")]
+        public async Task<IActionResult> GetCommentWithTitle(int id)
+        {
+            var comments = await _commentService.GetCommentByTitle(id);
+            return Ok(comments);
+        }
+
     }
 }

@@ -10,5 +10,7 @@ namespace Fikrimsi.Core.Services
 {
     public interface ICommentService : IGenericService<Comment,CommentDto>
     {
+        Task<IEnumerable<Comment>> GetCommentByTitle(int id);
+
     }
 }
